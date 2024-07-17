@@ -1,4 +1,4 @@
-module github.com/LouisBrunner/avahi2dns
+module github.com/grokbeer/avahi2dns
 
 go 1.16
 
