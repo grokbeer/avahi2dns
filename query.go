@@ -55,10 +55,9 @@ func createDNSReply(logger *logrus.Entry, cfg *config, aserver *avahi.Server, r 
 func TimedResolveHostName(timeoutSecs uint8, aserver *avahi.Server, iface int32, protocol int32, name string, aprotocol int32, flags uint32) (avahi.HostName, error) {
 	resultChan := make(chan resolveHostNameResult, 1)
 	go func() {
-		hostName, err := aserver.ResolveHostName(iface, protocol, name, aprotocol, flags)
-		resultChan <- resolveHostNameResult{HostName: hostName, Error: err}
+		hn, err := aserver.ResolveHostName(iface, protocol, name, aprotocol, flags)
+		resultChan <- resolveHostNameResult{HostName: hn, Error: err}
 	}()
-
 	select {
 	case <-time.After(time.Duration(timeoutSecs) * time.Second):
 		return avahi.HostName{}, errors.New("timed out")
