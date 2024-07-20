@@ -8,7 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func createDNSReply(logger *logrus.Entry, aserver *avahi.Server, r *dns.Msg) *dns.Msg {
+func createDNSReply(logger *logrus.Entry, cfg *config, aserver *avahi.Server, r *dns.Msg) *dns.Msg {
 	m := new(dns.Msg)
 	m.Compress = false
 
