@@ -28,7 +28,7 @@ func runServer(logger *logrus.Logger, cfg *config) error {
 	handler := func(w dns.ResponseWriter, r *dns.Msg) {
 		rlogger := logger.WithField("component", "main")
 		rlogger.WithField("request", r).Debug("received request")
-		m := createDNSReply(rlogger, aserver, r)
+		m := createDNSReply(rlogger, cfg, aserver, r)
 		rlogger.WithField("reply", m).Debug("sending reply")
 		m.SetReply(r)
 		w.WriteMsg(m)
