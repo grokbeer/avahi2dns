@@ -19,8 +19,8 @@ type config struct {
 	Domains  []string `arg:"-d" help:"comma-separated list of domains to resolve"`
 	BindAddr string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
 	Port     uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
-	IPv4Only bool     `arg:"-4" default:"false" help:"only support IPv4 (A) queries" env:"IPV4_ONLY`
-	IPv6Only bool     `arg:"-6" default:"false" help:"only support IPv6 (AAAA) queries" env:"IPV6_ONLY`
+	IPv4Only bool     `arg:"-4" default:"false" help:"only support IPv4 (A) queries" env:"IPV4_ONLY"`
+	IPv6Only bool     `arg:"-6" default:"false" help:"only support IPv6 (AAAA) queries" env:"IPV6_ONLY"`
 	Debug    bool     `arg:"-v" default:"false" help:"also include debug information"`
 }
 
