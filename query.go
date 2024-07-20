@@ -17,7 +17,7 @@ func createDNSReply(logger *logrus.Entry, cfg *config, aserver *avahi.Server, r 
 		for _, q := range r.Question {
 			switch q.Qtype {
 			case dns.TypeA:
-				if cfg.v6Only { // Skip TypeA if only IPv6 is enabled
+				if cfg.IPv6Only { // Skip TypeA if only IPv6 is enabled
 					logger.Info("IPv4 disabled, skipping A query...")
 					continue
 				}
@@ -29,7 +29,7 @@ func createDNSReply(logger *logrus.Entry, cfg *config, aserver *avahi.Server, r 
 				m.Answer = append(m.Answer, rr)
 
 			case dns.TypeAAAA:
-				if cfg.v4Only { // Skip TypeAAAA if only IPv4 is enabled
+				if cfg.IPv6Only { // Skip TypeAAAA if only IPv4 is enabled
 					logger.Info("IPv6 disabled, skipping AAAA query...")
 					continue
 				}

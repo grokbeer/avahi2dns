@@ -19,9 +19,9 @@ type config struct {
 	Domains  []string `arg:"-d" help:"comma-separated list of domains to resolve"`
 	BindAddr string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
 	Port     uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
+    IPv4Only bool     `arg:"-4" default:"false" help:"only support IPv4 (A) queries"`
+    IPv6Only bool     `arg:"-6" default:"false" help:"only support IPv6 (AAAA) queries"`
 	Debug    bool     `arg:"-v" default:"false" help:"also include debug information"`
-    v4Only   bool     `arg:"-4" help:"only support IPv4 (A) queries"`
-    v6Only   bool     `arg:"-6" help:"only support IPv6 (AAAA) queries"`
 }
 
 func parseArgs(logger *logrus.Logger) (*config, error) {
@@ -31,10 +31,10 @@ func parseArgs(logger *logrus.Logger) (*config, error) {
 		cfg.Domains = defaultDomains
 	}
 	// Logic to handle conflicting arguments, if necessary
-	if cfg.v4Only && cfg.v6Only {
+	if cfg.IPv4Only && cfg.IPv6Only {
 		logger.Warn("Both IPv4 and IPv6 support enabled. This is the default behavior.")
-		cfg.v4Only = false
-		cfg.v6Only = false
+		cfg.IPv4Only = false
+		cfg.IPv6Only = false
 	}
 	configureLogger(logger, cfg)
 	logger.WithField("config", cfg).Debug("config parsed")
