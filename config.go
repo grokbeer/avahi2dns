@@ -16,10 +16,10 @@ var defaultDomains = []string{
 }
 
 type config struct {
-	Domains  []string `arg:"-d" help:"comma-separated list of domains to resolve"`
+	Domains  []string `arg:"-d,env" help:"comma-separated list of domains to resolve"`
 	BindAddr string   `arg:"-a,--addr,env:BIND" default:"localhost" help:"address to bind on"`
 	Port     uint16   `arg:"-p,env" default:"53" help:"port to bind on"`
-	Debug    bool     `arg:"-v" default:"false" help:"also include debug information"`
+	Debug    bool     `arg:"-v,env" default:"false" help:"also include debug information"`
 }
 
 func parseArgs(logger *logrus.Logger) (*config, error) {
