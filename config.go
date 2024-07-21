@@ -17,8 +17,8 @@ var defaultDomains = []string{
 
 type config struct {
 	Domains  []string `arg:"-d" help:"comma-separated list of domains to resolve"`
-	BindAddr string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
-	Port     uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
+	BindAddr string   `arg:"-a,--addr,env:BIND" default:"localhost" help:"address to bind on"`
+	Port     uint16   `arg:"-p,env" default:"53" help:"port to bind on"`
 	Debug    bool     `arg:"-v" default:"false" help:"also include debug information"`
 }
 
