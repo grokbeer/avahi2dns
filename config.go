@@ -19,7 +19,7 @@ type config struct {
 	Domains     []string `arg:"-d" help:"comma-separated list of domains to resolve"`
 	BindAddr    string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
 	Port        uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
-	TimeoutSecs uint8    `arg:"-t,--timeout" default:"0" help:"timeout for avahi requests (in seconds, 0 for default avahi timeout)" env:"TIMEOUT"`
+	TimeoutSecs uint8    `arg:"-t,--timeout,env:TIMEOUT" default:"0" help:"timeout for avahi requests (in seconds, 0 for default avahi timeout)"`
 	Debug       bool     `arg:"-v" default:"false" help:"also include debug information"`
 }
 
