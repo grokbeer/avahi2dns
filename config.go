@@ -16,12 +16,13 @@ var defaultDomains = []string{
 }
 
 type config struct {
-	Domains  []string `arg:"-d" help:"comma-separated list of domains to resolve"`
-	BindAddr string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
-	Port     uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
-	IPv4Only bool     `arg:"-4,env:IPV4_ONLY" default:"false" help:"only support IPv4 (A) queries"`
-	IPv6Only bool     `arg:"-6,env:IPV6_ONLY" default:"false" help:"only support IPv6 (AAAA) queries"`
-	Debug    bool     `arg:"-v" default:"false" help:"also include debug information"`
+	Domains     []string `arg:"-d" help:"comma-separated list of domains to resolve"`
+	BindAddr    string   `arg:"-a,--addr" default:"localhost" help:"address to bind on" env:"BIND"`
+	Port        uint16   `arg:"-p" default:"53" help:"port to bind on" env:"PORT"`
+	IPv4Only    bool     `arg:"-4,env:IPV4_ONLY" default:"false" help:"only support IPv4 (A) queries"`
+	IPv6Only    bool     `arg:"-6,env:IPV6_ONLY" default:"false" help:"only support IPv6 (AAAA) queries"`
+	TimeoutSecs uint8    `arg:"-t,--timeout,env:TIMEOUT" default:"0" help:"timeout for avahi requests (in seconds, 0 for default avahi timeout)"`
+	Debug       bool     `arg:"-v" default:"false" help:"also include debug information"`
 }
 
 func parseArgs(logger *logrus.Logger) (*config, error) {
